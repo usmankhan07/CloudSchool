@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ButtonAppBar from './components/commons/Navbar.js';
+import Profile from './components/AdminDashboard/Profile.js';
 import SignIn from './components/commons/SignIn.js';
 import Registration from './components/commons/Registration.js';
 import SingleLineGridList from './components/user/GridList.js';
@@ -36,16 +37,22 @@ Most of our business<br></br> &nbsp;&nbsp;&nbsp;&nbsp;are achieved through satis
             </p>
           <Footer/>
           </div>} />
-        
-          <Route path = '/Registration' render={(props) => <div>
-          <Registration/>
-          </div>} />
-          <Route path = '/AdminDashboard' render={(props) => <div>
-          <AdminDashboard/>
-          </div>} />
+          
+          <Route path = '/Registration' render={(props)=> <div>
+            <ButtonAppBar/>
+            <Registration/>
+            </div>}/>
+            
+          <Route path = '/AdminDashboard' component= {AdminDashboard}/>
           <Route path = '/SignIn' render={(props) => <div>
           <SignIn/>
           </div>} />
+          <Route path = '/Profile' render={(props)=> <div>
+            <Profile/>
+          </div>}/>
+
+
+
           </div>
       </Router>
       
