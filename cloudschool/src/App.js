@@ -11,6 +11,9 @@ import Course from './components/user/Course.js';
 import CourseList from './components/user/CourseList.js';
 import Footer from './components/commons/Footer.js';
 import AdminDashboard from './components/AdminDashboard/AdminDashboard.js';
+import InstitutionsTable from './components/AdminDashboard/Institutions.js';
+import CustomizedTable from './/components/AdminDashboard/Table.js';
+
 
 
 class App extends Component {
@@ -42,6 +45,10 @@ Most of our business<br></br> &nbsp;&nbsp;&nbsp;&nbsp;are achieved through satis
             <ButtonAppBar/>
             <Registration/>
             </div>}/>
+          
+            <Route path = '/Button' render={(props)=> <div>
+              <InstitutionsTable/>
+            </div>}/>
             
           <Route path = '/AdminDashboard' component= {AdminDashboard}/>
           <Route path = '/SignIn' render={(props) => <div>
@@ -50,7 +57,10 @@ Most of our business<br></br> &nbsp;&nbsp;&nbsp;&nbsp;are achieved through satis
           <Route path = '/Profile' render={(props)=> <div>
             <Profile/>
           </div>}/>
-
+          
+          <Route path = '/Table' render={(props)=> <div>
+            <CustomizedTable/>
+          </div>}/>
 
 
           </div>
