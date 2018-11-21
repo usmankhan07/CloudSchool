@@ -47,11 +47,7 @@ class Profile extends React.Component {
         const {classes} = this.props;
         return(
             <div>
-                <div>
-                    <button>
-                        Choose Profile
-                    </button>
-                </div>
+                
                 <div>
                  <Avatar
                     alt="Adelle Charles"
@@ -77,6 +73,11 @@ class Profile extends React.Component {
                         </Typography>
                     </Paper>
                   </main>
+                </div>
+                <div>
+                    <button>
+                        Choose Profile
+                    </button>
                 </div>
             </div>
             

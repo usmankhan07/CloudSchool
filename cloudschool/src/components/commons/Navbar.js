@@ -36,7 +36,7 @@ function ButtonAppBar(props) {
             Cloud School
           </Typography>
           <Link to = {'/Registration'} ><Button color="inherit">Register</Button></Link>
-          <Link to = {'/SignIn'}><Button color="inherit">SignIn</Button></Link>
+          <Link to = {'/SignIn'}><Button color="inherit" position = "left">SignIn</Button></Link>
         </Toolbar>
       </AppBar>
     </div>

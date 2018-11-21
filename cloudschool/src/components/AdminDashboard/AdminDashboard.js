@@ -14,12 +14,17 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import Profile from './Profile.js';
-import SignIn from '../commons/SignIn.js';
 import InstitutionsTable from './Institutions.js';
 import TeacherTable from './Teacher.js';
 import StudentTable from './Student.js';
 import Courses from './Courses.js';
 import Sections from './Sections.js';
+import Button from '@material-ui/core/Button';
+import library_books from '@material-ui/icons/LibraryBooks';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import AccountBalance from '@material-ui/icons/AccountBalance';
+import Class from '@material-ui/icons/Class';
+
 
 const drawerWidth = 240;
 
@@ -29,19 +34,30 @@ const styles = theme => ({
 	},
 	appBar: {
 		zIndex: theme.zIndex.drawer + 1,
+		
 	},
+	menuButton: {
+    marginLeft: -12,
+    marginRight: 20,
+  },
 	drawer: {
 		width: drawerWidth,
 		flexShrink: 0,
+		
 	},
 	drawerPaper: {
 		width: drawerWidth,
+		color:555555,
 	},
+	nested: {
+    paddingLeft: theme.spacing.unit * 4,
+  },
 	content: {
 		flexGrow: 1,
 		padding: theme.spacing.unit * 3,
 	},
 	toolbar: theme.mixins.toolbar,
+
 });
 
 class AdminDashboard extends React.Component {
@@ -49,11 +65,25 @@ class AdminDashboard extends React.Component {
 		super(props);
     this.state = {selectedItem:''};
     this.handleDrawer=this.handleDrawer.bind(this);
-    this.showMe=this.showMe.bind(this);
-  }
+		this.showMe=this.showMe.bind(this);
+		this.handleNewform = this.handleNewform.bind(this);
+	}
+	state = {
+    open: true,
+  };
+
   handleDrawer(selectedItem){
     this.setState({selectedItem:selectedItem})
-  }
+	}
+	handleClick = () => {
+    this.setState(state => ({ open: !state.open }));
+	};
+	
+	handleNewform() {
+		
+			this.props.history.push('/');
+	}
+
   showMe(){
     if(this.state.selectedItem==='Profile'){
       return (<div><Profile/></div>)
@@ -78,9 +108,13 @@ class AdminDashboard extends React.Component {
       return (<div><Sections/></div>)
     }
     
-    else {
+    else if (this.state.selectedItem==='Reports') {
       return (<div>Reports</div>)
-    }
+		} 
+		else if (this.state.selectedItem==='Logout') {
+      return (<div> {this.handleNewform()} </div>)
+		} 
+		
     
   }
 	render() {
@@ -88,10 +122,10 @@ class AdminDashboard extends React.Component {
 		return (
 			<div className={classes.root}>
 				<CssBaseline />
-				<AppBar position="fixed" className={classes.appBar}>
+				<AppBar position="fixed" className={classes.appBar} >
 					<Toolbar>
 						<Typography variant="h6" color="inherit" noWrap>
-							Clipped drawer
+							Admin Dashboard
 						</Typography>
 					</Toolbar>
 				</AppBar>
@@ -107,7 +141,7 @@ class AdminDashboard extends React.Component {
 						{['Profile', 'Institutions', 'Teachers', 'Students'].map((text, index) =>
 							<ListItem onClick={() => this.handleDrawer(text)} button key={text}>
 								<ListItemIcon>
-									{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+									{index === 1? <AccountBalance/>: <AccountCircle/>}
 								</ListItemIcon>
 								<ListItemText primary={text} />
 							</ListItem>
@@ -115,7 +149,7 @@ class AdminDashboard extends React.Component {
 					</List>
 					<Divider />
 					<List>
-						{['Courses', 'Sections', 'Reports'].map((text, index) =>
+						{['Courses', 'Sections', 'Reports', 'Logout'].map((text, index) =>
 							<ListItem onClick={() => this.handleDrawer(text)} button key={text}>
 								<ListItemIcon>
 									{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
