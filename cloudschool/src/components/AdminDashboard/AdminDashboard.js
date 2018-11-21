@@ -18,7 +18,8 @@ import SignIn from '../commons/SignIn.js';
 import InstitutionsTable from './Institutions.js';
 import TeacherTable from './Teacher.js';
 import StudentTable from './Student.js';
-
+import Courses from './Courses.js';
+import Sections from './Sections.js';
 
 const drawerWidth = 240;
 
@@ -70,11 +71,11 @@ class AdminDashboard extends React.Component {
     }
     
     else if(this.state.selectedItem==='Courses'){
-      return (<div>Courses</div>)
+      return (<div><Courses/></div>)
     }
     
     else if(this.state.selectedItem==='Sections'){
-      return (<div>Sections</div>)
+      return (<div><Sections/></div>)
     }
     
     else {

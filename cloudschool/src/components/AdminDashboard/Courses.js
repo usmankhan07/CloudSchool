@@ -10,8 +10,9 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import img from '../../images/software-engineer.jpg';
-
+import SE from '../../images/software-engineer.jpg';
+import  DS  from "../../images/DataStructure.jpg";
+import DTS from '../../images/DataScience.png';
 
 const styles = theme => ({
   root: {
@@ -32,8 +33,12 @@ function Courses(props) {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={24}>
-        <Grid item xs={12} sm={6}>
+        <Button>
+            Add Courses
+        </Button>
+    
+      <Grid container spacing={16}>
+        <Grid item xs={12} sm={4}>
         <Card className={classes.card}>
                   <CardActionArea>
                   <CardMedia
@@ -41,7 +46,7 @@ function Courses(props) {
                     alt="Software Engineering"
                     className={classes.media}
                     height="140"
-                    src = {img}
+                    src = {SE}
                     title="SoftWare Engineering"
                   />
                   <CardContent>
@@ -64,24 +69,53 @@ function Courses(props) {
                 </CardActions>
             </Card>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid xs={12} sm={4}>
         <Card className={classes.card}>
                   <CardActionArea>
                   <CardMedia
                     component="img"
-                    alt="Software Engineering"
+                    alt="Data Structure"
                     className={classes.media}
                     height="140"
-                    src = {img}
-                    title="SoftWare Engineering"
+                    src = {DS}
+                    title="Data Structure"
                   />
                   <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Software Engineering
+                    Data Structure
                   </Typography>
                   <Typography component="p">
-                    Software engineering is the application of engineering to the development of software
-                    in a systematic method
+                  Data structure is a collection of data values, the relationships among them, and the functions or operations that can be applied to the data
+                  </Typography>
+                  </CardContent>
+                  </CardActionArea>
+                  <CardActions>
+                  <Button size="small" color="primary">
+                    Teacher
+                  </Button>
+                  <Button size="small" color="primary">
+                    Details
+                  </Button>
+                </CardActions>
+            </Card>
+        </Grid>
+        <Grid xs={12} sm={4}>
+        <Card className={classes.card}>
+                  <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    alt="Data Science"
+                    className={classes.media}
+                    height="140"
+                    src = {DTS}
+                    title="Data Science"
+                  />
+                  <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                  Data Science
+                  </Typography>
+                  <Typography component="p">
+                    Data Science is an inter disciplarnry field that uses scientific methods, processes, algoorithms and systems to extract knowledge.
                   </Typography>
                   </CardContent>
                   </CardActionArea>

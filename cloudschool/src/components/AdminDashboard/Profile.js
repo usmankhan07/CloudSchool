@@ -7,6 +7,7 @@ import usman from '../../images/usman.jpg';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
+
 const styles = theme => ({
   row: {
     display: 'theme.flex',
@@ -46,7 +47,13 @@ class Profile extends React.Component {
         const {classes} = this.props;
         return(
             <div>
-                <Avatar
+                <div>
+                    <button>
+                        Choose Profile
+                    </button>
+                </div>
+                <div>
+                 <Avatar
                     alt="Adelle Charles"
                     src = {usman}
                     className={classNames(classes.avatar, classes.bigAvatar)}/>    
@@ -55,20 +62,24 @@ class Profile extends React.Component {
                   <Typography variant="h5" component="h3">
                             <p>
                                 Name: Usman Khan
+                                <br></br>
                                 Father Name: Pervaiz Khan
                                 
                             </p>
                         </Typography>
                         <Typography component="p">
                                 Class: 10
-                                Course: Fsc Pre-Engineering
+                                <br></br>
                                 Section: B
+                                <br></br>
+                                Course: Software Engineering
+                                
                         </Typography>
                     </Paper>
                   </main>
-                  
-                
+                </div>
             </div>
+            
         );
     }
         
