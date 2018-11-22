@@ -73,7 +73,9 @@ class Registration extends React.Component {
 		this.state = {
 			value: 0,
     };
-    this.handleNewForm=this.handleNewForm.bind(this);
+	this.handleNewForm=this.handleNewForm.bind(this);
+	this.handleNewFormforStudent=this.handleNewFormforStudent.bind(this);
+	this.handleNewFormforTeacher=this.handleNewFormforTeacher.bind(this);
 	}
 
 	handleChange = (event, value) => {
@@ -82,21 +84,23 @@ class Registration extends React.Component {
 	handleNewForm() {
 		this.props.history.push('/AdminDashboard');
 	}
-
+	handleNewFormforStudent() {
+		this.props.history.push('/StudentDashboard');
+	}
+	handleNewFormforTeacher() {
+		this.props.history.push('/TeacherDashboard');
+	}
 	render() {
 		const { classes } = this.props;
 		const { value } = this.state;
 
 		return (
 			<div className={classes.root}>
-				<AppBar position="static">
 					<Tabs value={value} onChange={this.handleChange}>
-						<Tab label="Institution Registration" />
 						<Tab label="Student Registration" />
 						<Tab label="Teacher Registration" />
-						<Tab label="Sign In" data-route="/SignIn" onActive={handleActive} />
+						<Tab label="Admin Registration" />
 					</Tabs>
-				</AppBar>
 				{value === 0 &&
 					<TabContainer>
 						<div>
@@ -151,7 +155,9 @@ class Registration extends React.Component {
 											fullWidth
 											variant="contained"
 											color="primary"
+											onClick={this.handleNewFormforStudent}
 											className={classes.submit}
+
 										>
 											Registration Form
 										</Button>
@@ -214,6 +220,7 @@ class Registration extends React.Component {
 											fullWidth
 											variant="contained"
 											color="primary"
+											onClick={this.handleNewFormforTeacher}
 											className={classes.submit}
 										>
 											Registration Form

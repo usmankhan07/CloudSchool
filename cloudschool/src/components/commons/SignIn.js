@@ -10,6 +10,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
+import ButtonAppBar from './Navbar';
 
 const styles = theme => ({
   layout: {
@@ -46,6 +47,11 @@ const styles = theme => ({
 function SignIn(props) {
   const { classes } = props;
   return (
+    <div>
+        <div>
+      <ButtonAppBar/>
+    </div>
+
     <div id="create-article-form">
       <CssBaseline />
       <main className={classes.layout}>
@@ -82,7 +88,9 @@ function SignIn(props) {
           </form>
         </Paper>
       </main>
+      </div>
     </div>
+    
   );
 }
 

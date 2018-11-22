@@ -40,20 +40,20 @@ const styles = theme => ({
 });
 
 let id = 0;
-function createData(name, fathername, classname , registrationnumber, actions) {
+function createData(name, calories, fat, carbs, protein) {
   id += 1;
-  return { id, name, fathername, classname, registrationnumber, actions };
+  return { id, name, calories, fat, carbs, protein };
 }
 
 const rows = [
-  createData('Ali', 'Kamran', '10-A', 24, 'Delete/Edit'),
-  createData('Usama', 'Saleem', '10-B', 37, 'Delete/Edit'),
-  createData('Ahmad', 'Arshad', '10-C', 24, 'Delete/Edit'),
-  createData('Usman', 'Arshad', '9-A', 23, 'Delete/Edit'),
-  createData('Imran', 'Bilal', '9-B', 49, 'Delete/Edit'),
+  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+  createData('Eclair', 262, 16.0, 24, 6.0),
+  createData('Cupcake', 305, 3.7, 67, 4.3),
+  createData('Gingerbread', 356, 16.0, 49, 3.9),
 ];
 
-function StudentTable(props) {
+function CustomizedTable(props) {
   const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount } = props;
 
   return (
@@ -61,21 +61,25 @@ function StudentTable(props) {
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <CustomTableCell >Name</CustomTableCell>
-            <CustomTableCell >Fathername</CustomTableCell>
-            <CustomTableCell >Classname</CustomTableCell>
-            <CustomTableCell numeric>Registrationnumber</CustomTableCell>
-            <CustomTableCell >Actions</CustomTableCell>
+            <CustomTableCell>Dessert (100g serving)</CustomTableCell>
+            <CustomTableCell numeric>Calories</CustomTableCell>
+            <CustomTableCell numeric>Fat (g)</CustomTableCell>
+            <CustomTableCell numeric>Carbs (g)</CustomTableCell>
+            <CustomTableCell numeric>Protein (g)</CustomTableCell>
+            <CustomTableCell numeric>Actions</CustomTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map(row => {
             return (
               <TableRow className={classes.row} key={row.id}>
-                <CustomTableCell numeric>{row.name}</CustomTableCell>
-                <CustomTableCell numeric>{row.fathername}</CustomTableCell>
-                <CustomTableCell numeric>{row.classname}</CustomTableCell>
-                <CustomTableCell numeric>{row.registrationnumber}</CustomTableCell>
+                <CustomTableCell component="th" scope="row">
+                  {row.name}
+                </CustomTableCell>
+                <CustomTableCell numeric>{row.calories}</CustomTableCell>
+                <CustomTableCell numeric>{row.fat}</CustomTableCell>
+                <CustomTableCell numeric>{row.carbs}</CustomTableCell>
+                <CustomTableCell numeric>{row.protein}</CustomTableCell>
                 <CustomTableCell padding="checkbox">
                     <IconButton aria-label="Delete">
                         <DeleteIcon />
@@ -93,8 +97,8 @@ function StudentTable(props) {
   );
 }
 
-StudentTable.propTypes = {
+CustomizedTable.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(StudentTable);
+export default withStyles(styles)(CustomizedTable);
