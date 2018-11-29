@@ -1,7 +1,7 @@
 
 const mongoose = require("mongoose");
 
-const connectionstr =  "mongodb://localhost:27017/Login";
+const connectionstr =  "mongodb://localhost:27017/CloudSchoolDb";
 
 const options = {
   reconnectTries: Number.MAX_VALUE,
