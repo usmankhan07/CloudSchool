@@ -39,4 +39,4 @@ const admin = new Schema({
 });
 
 const admin = mongoose.model('admin', admin);
-module.export = admin;
+module.exports = admin;

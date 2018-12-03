@@ -4,12 +4,7 @@ const Schema = mongoose.Schema;
 const student = new Schema({
     name:{
         type: String,
-        required:true
-    },
-    username: {
-        type:String,
         required:true,
-        unique:true
     },
     password:{
         type:String,
@@ -17,11 +12,11 @@ const student = new Schema({
     },
     email:{
         type:String,
-        required:true
+        required:true,
     },
     gender: {
         type:String,
-        required:false
+        required:true
     },
     classname:{
         type:String,
@@ -37,18 +32,12 @@ const student = new Schema({
     },
     postalcode:{
         type:Number,
-        required:true
+        required:true,
     },
 
-    fatherName: {
+    fathername: {
 		type: String,
 		required: true,
-    },
-    date: {
-		type: Date,
-        default: Date.now(),
-        required:true
-        
     },
     InstitutionName:{
         type:String,
@@ -56,9 +45,11 @@ const student = new Schema({
     },
     registrationnumber:{
         type: String,
-        required:true
+        required:true,
+        
+
     },
 });
 
-const student = mongoose.model('student', student);
-module.export = student;
+const Student = mongoose.model('student', student);
+module.exports = Student;

@@ -1,52 +1,36 @@
-// app.js
-const cors = require('cors');
-const express = require("express");
-var path = require('path')
+// Importing files
+const express = require("express")
 const bodyParser = require("body-parser");
-var config=require("./config/db");
-const loginController = require("./controllers/LoginController");
-const registerController = require("./controllers/RegisterController");
-const todoListController = require("./controllers/TodoListController");
+const cors = require('cors');
+const mongoose = require("mongoose");
+// const routes = require("./routes/api.js");
+const RegisterController = require("./controllers/RegisterController");
+const LoginController = require("./controllers/LoginController")
+const config = require("./config/db");
 
+// Connect to the Data-base
+mongoose.connect('mongodb://localhost/db');
+mongoose.Promise = global.Promise;
+
+// Express Object containing all the functions like get, post etc.
 const app = express();
-const port = process.env.PORT || 3301;
-
 app.use(cors());
 app.options('*', cors());
-app.use(bodyParser.urlencoded({ extended: true }));
+// Use body-parser for the routes objects
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
+// Routes
+// app.use('/studentapi', routes);
+app
+  .route("/studentapi", )
+  .post(RegisterController.handleRegister);
 
+app
+  .route("/student", )
+  .get(LoginController.getAllAccounts);
+// Listening to the port
 
-  app
-    .route("/api/Accounts/SignIn",)
-    .post(loginController.handleSignInAttempt)
-
-  app
-    .route("/api/Accounts/Register",)
-    .post(registerController.handleRegister)
-    
-  app
-  .route("/api/Accounts/del",)
-  .delete(loginController.deleteOnly)
-    
-  app
-    .route("/api/Accounts/getAll",)
-    .get(loginController.getAllAccounts)
-
-  app
-    .route("/api/Accounts/TodoList",)
-    .post(todoListController.handleAttemptCreatTodo)
-
-    app
-    .route("/api/Accounts/getAllTodo",)
-    .get(todoListController.handleAttempFindTodo)
-    
-    app
-    .route("/api/Accounts/getOneTodo/:userId",)
-    .get(todoListController.handleAttempFindOneTodo)
-
-
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+app.listen(process.env.port || 3001, function() {
+  console.log("now listening request");
 });
