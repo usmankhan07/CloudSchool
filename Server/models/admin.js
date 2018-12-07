@@ -34,9 +34,10 @@ const admin = new Schema({
     },
     IdCardNumber:{
         type: String,
-        required:true
+        required:true,
+        unique: true
     },
 });
 
-const admin = mongoose.model('admin', admin);
-module.exports = admin;
+const Admin = mongoose.model('admin', admin);
+module.exports = Admin;

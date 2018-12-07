@@ -1,23 +1,15 @@
 const mongoose  = require("mongoose");
 const Schema = mongoose.Schema;
+const StudentModel = require("./studentModel.js");
 
 const LoginStudent = new Schema({
-    username: {
-        type: String,
-        required: true,
-        unique: true
-    },
     registrationnumber: {
         type: String,
-        required: true
-    },
-    password: {
-        type: String,
-        required: true
+        required: true,
+        ref:"StudentModel"
     }
-
     
 });
 
-const LoginStudent = mongoose.model('LoginStudent', LoginStudent);
-module.exports = LoginStudent;
+const StudentLogin = mongoose.model('LoginStudent', LoginStudent);
+module.exports = StudentLogin;

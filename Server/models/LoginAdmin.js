@@ -9,9 +9,12 @@ const LoginAdmin = new Schema({
     password: {
         type: String,
         required: true
+    },
+    AdminId: {
+        type:Schema.Types.ObjectId
     }
     
 });
 
-const LoginAdmin = mongoose.model('LoginAdmin', LoginAdmin);
-module.exports = LoginAdmin;
+const AdminLogin = mongoose.model('LoginAdmin', LoginAdmin);
+module.exports = AdminLogin;

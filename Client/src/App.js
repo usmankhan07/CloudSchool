@@ -9,7 +9,7 @@ import Route from 'react-router-dom/Route';
 import Album from './components/Extra/mainview.js';
 import Course from './components/Extra/Course.js';
 import CourseList from './components/Extra/CourseList.js';
-import Footer from './components/commons/Footer.js';
+import FooterPage from './components/commons/Footer.js';
 import AdminDashboard from './components/AdminDashboard/AdminDashboard.js';
 import InstitutionsTable from './components/AdminDashboard/Institutions.js';
 import CustomizedTable from './/components/AdminDashboard/Table.js';
@@ -41,7 +41,7 @@ class App extends Component {
 
 Most of our business<br></br> &nbsp;&nbsp;&nbsp;&nbsp;are achieved through satisfied clients and our commitment to deliver the best is what keeps us going.
             </p>
-          <Footer/>
+          <FooterPage/>
           </div>} />
           
           <Route path = '/Registration' render={(props)=> <div>

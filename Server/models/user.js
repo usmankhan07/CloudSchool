@@ -1,10 +1,10 @@
 const mongoose  = require('mongoose');
 const Schema = mongoose.Schema;
 
-const student = new Schema({
+const user = new Schema({
     name:{
         type: String,
-        required:true,
+        required:true
     },
     password:{
         type:String,
@@ -12,9 +12,13 @@ const student = new Schema({
     },
     email:{
         type:String,
-        required:true,
+        required:true
     },
     gender: {
+        type:String,
+        required:false
+    },
+    InstitutionName:{
         type:String,
         required:true
     },
@@ -32,24 +36,18 @@ const student = new Schema({
     },
     postalcode:{
         type:Number,
-        required:true,
+        required:true
     },
 
-    fathername: {
+    fatherName: {
 		type: String,
 		required: true,
     },
-    InstitutionName:{
-        type:String,
-        required:true
-    },
-    registrationnumber:{
+    IdCardNumber:{
         type: String,
-        required:true,
-        
-
+        required:true
     },
 });
 
-const Student = mongoose.model('student', student);
-module.exports = Student;
+const User = mongoose.model('user', User);
+module.exports = User;
