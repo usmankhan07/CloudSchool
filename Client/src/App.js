@@ -15,12 +15,47 @@ import InstitutionsTable from './components/AdminDashboard/Institutions.js';
 import CustomizedTable from './/components/AdminDashboard/Table.js';
 import StudentDashboard from './components/StudentDashboard/StudentDashboard.js';
 import TeacherDashboard from './components/Teacher/TeacherDashboard.js';
-
+import {getFromStorage,setInStorage} from './utils/storage.js';
 
 
 
 class App extends Component {
+  state = {
+    isLoading: true,
+    isMount: '',
+    signUperr: '',
+    signInerr: ''
+  }
+
+  componentDidMount = () => {
+    const isMount = getFromStorage('key');
+    if (isMount) {
+      // Verified
+      fetch("/api/account/StudentRegistration")
+        .then(res => res.json())
+        .then(json => {
+          this.setState({
+            counters: json
+          });
+        });
+      } else {
+      this.setState({
+        isLoading: false,
+      })
+    }
+  }
+
   render() {
+    const {
+      isLoading,
+    } = this.state;
+    if (isLoading) {
+      return (
+        <div>
+          <p>Loading...</p>
+        </div>
+      )
+    }
     return (
       <Router>
         <div>
@@ -38,8 +73,7 @@ class App extends Component {
 
               Edsys focuses on client delight &nbsp;&nbsp;&nbsp;&nbsp;and we are proud of that.Our products,services  and solutions ensure that our clients achieve better revenues,strengthen their customer base and lead the competition.
               The highly motivated team at Edsys &nbsp;&nbsp;&nbsp;&nbsp;works towards achieving wholesome customer satisfaction with a partnership approach.At Edsys, we forge a perfect partner relationship with client that vouchsafes long-term relations.
-
-Most of our business<br></br> &nbsp;&nbsp;&nbsp;&nbsp;are achieved through satisfied clients and our commitment to deliver the best is what keeps us going.
+              Most of our business<br></br> &nbsp;&nbsp;&nbsp;&nbsp;are achieved through satisfied clients and our commitment to deliver the best is what keeps us going.
             </p>
           <FooterPage/>
           </div>} />

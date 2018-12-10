@@ -3,7 +3,7 @@ const Institution = require("../models/institution.js");
 exports.handleSignInAttempt = (req, res) => {
 
 	console.log('SIGN IN ATTEMPT FROM :', req.body.AdminId);
-	Institution.findOne({ username: req.body.name, password: req.body.password}, (err, account) => {
+	Institution.findOne({ AdminName: req.body.AdminName, Adminpassword: req.body.Adminpassword}, (err, account) => {
 		if (err) {
 			console.log('Error in Server ' + account);
 			res.status(500).send({ signInStatus: 'failure', err: err });

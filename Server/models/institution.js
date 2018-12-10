@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const institutionSchema = new Schema({
     Institutionname: {
         type: String,
+        required: true
         
     },
     country: {

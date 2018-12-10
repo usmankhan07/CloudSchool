@@ -7,8 +7,7 @@ exports.handleRegister = (req,res) =>{
   Institution.findOne({name: req.body.Institutionname}, (err, account) => {
     if (err)
     {
-       console.log("Error in Server " +account)
-
+      console.log("Error in Server " + account)
       res.status(500).send({'registerStatus':'failure','err':err});
     }
     if(account != null || account != undefined )
