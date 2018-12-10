@@ -30,6 +30,10 @@ const studentSchema = new Schema({
         type:String,
         required:true
     }
+    age:{
+        type:Int8Array,
+        required:true
+    }
 });
 
 const StudentModel = mongoose.model('studentModel', studentSchema);

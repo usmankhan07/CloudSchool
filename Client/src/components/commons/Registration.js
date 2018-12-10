@@ -15,6 +15,7 @@ import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import Paper from '@material-ui/core/Paper';
 import {withRouter} from 'react-router';
+
 function TabContainer(props) {
 	return (
 		<Typography component="div" style={{ padding: 8 * 3 }}>
@@ -72,7 +73,7 @@ class Registration extends React.Component {
 		super(props);
 		this.state = {
 			value: 0,
-    };
+    	};
 	this.handleNewForm=this.handleNewForm.bind(this);
 	this.handleNewFormforStudent=this.handleNewFormforStudent.bind(this);
 	this.handleNewFormforTeacher=this.handleNewFormforTeacher.bind(this);
@@ -111,18 +112,43 @@ class Registration extends React.Component {
 										Registration Form
 									</Typography>
 									<form className={classes.form}>
+										{/* Name */}
 										<FormControl margin="normal" required fullWidth>
-											<InputLabel htmlFor="password">Name</InputLabel>
+											<InputLabel>Name</InputLabel>
 											<Input name="name" type="name" id="name" autoComplete="name" />
 										</FormControl>
+
+										{/* Father Name */}
+										<FormControl margin="normal" required fullWidth>
+											<InputLabel htmlFor="father name">Father Name</InputLabel>
+											<Input name="father name" type="name" id="name" autoComplete="name" />
+										</FormControl>
+
+										{/* Institution Name */}
+										<FormControl margin="normal" required fullWidth>
+											<InputLabel htmlFor="name">Institution Name</InputLabel>
+											<Input name="name" type="name" id="name" autoComplete="name" />
+										</FormControl>
+
+										{/* Email */}
 										<FormControl margin="normal" required fullWidth>
 											<InputLabel htmlFor="email">Email Address</InputLabel>
 											<Input id="email" name="email" autoComplete="email" autoFocus />
 										</FormControl>
+
+										{/* Section */}
+										<FormControl margin="normal" required fullWidth>
+											<InputLabel htmlFor="section">Section</InputLabel>
+											<Input name="name" type="name" id="name" autoComplete="name" />
+										</FormControl>
+										
+										{/* Class Name */}
 										<FormControl margin="normal" required fullWidth>
 											<InputLabel htmlFor="email">Class Name</InputLabel>
 											<Input id="classname" name="classname" autoComplete="classname" autoFocus />
 										</FormControl>
+
+										{/* Password */}
 										<FormControl margin="normal" required fullWidth>
 											<InputLabel htmlFor="password">Password</InputLabel>
 											<Input
@@ -132,6 +158,8 @@ class Registration extends React.Component {
 												autoComplete="current-password"
 											/>
 										</FormControl>
+
+										{/* Confirm Password */}
 										<FormControl margin="normal" required fullWidth>
 											<InputLabel htmlFor="password">Confirm Password</InputLabel>
 											<Input
@@ -141,15 +169,20 @@ class Registration extends React.Component {
 												autoComplete="confirm-password"
 											/>
 										</FormControl>
-
+										
+										{/* Age
 										<FormControl margin="normal" required fullWidth>
 											<InputLabel htmlFor="password">Age</InputLabel>
 											<Input name="age" type="name" id="age" autoComplete="age" />
-										</FormControl>
+										</FormControl> */}
+
+										{/* Remember me */}
 										<FormControlLabel
 											control={<Checkbox value="remember" color="primary" />}
 											label="Remember me"
 										/>
+
+										{/* Registration Button */}
 										<Button
 											type="submit"
 											fullWidth
@@ -157,7 +190,6 @@ class Registration extends React.Component {
 											color="primary"
 											onClick={this.handleNewFormforStudent}
 											className={classes.submit}
-
 										>
 											Registration Form
 										</Button>
