@@ -29,6 +29,9 @@ const TeacherSchema = new Schema({
     section:{
         type:String,
         required:true
+    },
+    TeacherId:{
+        type:Schema.Types.ObjectId
     }
 });
 

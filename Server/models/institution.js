@@ -22,8 +22,8 @@ const institutionSchema = new Schema({
             required: true
     },
     Adminpassword:{
-            required: true,
-            type:String
+            type:String,
+            required: true
     },
     Adminemail:{
             type:String,

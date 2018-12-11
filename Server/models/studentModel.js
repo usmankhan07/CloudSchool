@@ -29,6 +29,10 @@ const studentSchema = new Schema({
     section:{
         type:String,
         required:true
+    },
+    StudentId:{
+        type:Schema.Types.ObjectId
+        
     }
 });
 

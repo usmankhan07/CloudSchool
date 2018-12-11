@@ -3,8 +3,8 @@ const studentModel = require("../models/studentModel.js");
 
 exports.handleSignInAttempt = (req, res) => {
 
-	console.log('SIGN IN ATTEMPT FROM :', req.body.registrationnumber);
-	studentModel.findOne({ name: req.body.name, password: req.body.password }, (err, account) => {
+	console.log('SIGN IN ATTEMPT FROM :', req.body.name);
+	studentModel.findOne({ name: req.body.name, fathername: req.body.fathername, password: req.body.password}, (err, account) => {
 		if (err) {
 			console.log('Error in Server ' + account);
 			res.status(500).send({ signInStatus: 'failure', err: err });
@@ -34,7 +34,7 @@ exports.getAllAccounts = (req, res) => {
 // Delete Specific user
 exports.deleteOnly = (req, res) => {
 	console.log('Get all accounts ');
-	studentModel.deleteOne({ _id: req.body.registrationnumber}, (err, student) => {
+	studentModel.deleteOne({ _id: req.body.StudentId}, (err, student) => {
 		if (err) {
 			console.log('ERROR in database............');
 			res.status(500).send(err);
@@ -45,7 +45,7 @@ exports.deleteOnly = (req, res) => {
 
 // Get Specific User based on id
 exports.GetSpecificUser = (req, res) => {
-	studentModel.findById({_id:req.params.registrationnumber})
+	studentModel.findById({_id:req.params.StudentId})
 	  .then(data => {
 		console.log(data)
 		res.status(200).json({ 'getStatus': 'success', 'user': data });
@@ -57,7 +57,7 @@ exports.GetSpecificUser = (req, res) => {
 // Update Data of the user:
 
 exports.Update = function (req, res) {
-	studentModel.findByIdAndUpdate(req.params.registrationnumber, {$set: req.body}, function (err, institution) {
+	studentModel.findByIdAndUpdate(req.params.StudentId, {$set: req.body}, function (err, institution) {
 		if (err) return next(err);
 		res.status(200).json({ 'getStatus': 'success', 'user': institution });
 	});

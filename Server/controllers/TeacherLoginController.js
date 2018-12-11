@@ -3,7 +3,7 @@ const Teacher = require("../models/teacher.js");
 exports.handleSignInAttempt = (req, res) => {
 
 	console.log('SIGN IN ATTEMPT FROM :', req.body.name);
-	Teacher.findOne({ username: req.body.name, password: req.body.password, fathername:req.body.fathername}, (err, account) => {
+	Teacher.findOne({ name: req.body.name, fathername:req.body.fathername, password: req.body.password}, (err, account) => {
 		if (err) {
 			console.log('Error in Server ' + account);
 			res.status(500).send({ signInStatus: 'failure', err: err });
@@ -52,6 +52,8 @@ exports.GetSpecificUser = (req, res) => {
 		res.status(500).json({ 'getStatus': 'failed', 'err': err });
 	  });
   };
+
+
 
 // Update Data of the user:
 
