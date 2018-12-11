@@ -16,6 +16,7 @@ import InstitutionsTable from './components/AdminDashboard/Institutions';
 import StudentDashboard from './components/StudentDashboard/StudentDashboard';
 import TeacherDashboard from './components/Teacher/TeacherDashboard';
 import Register from './components/commons/NewRegistration';
+import NewSignIn from './components/commons/NewSignIn';
 
 class App extends Component {
   render() {
@@ -55,7 +56,7 @@ Most of our business<br />are achieved through satisfied clients and our commitm
           <Route path = '/StudentDashboard' component= {StudentDashboard}/>
           <Route path = '/TeacherDashboard' component= {TeacherDashboard}/>
           <Route path = '/SignIn' render={(props) => <div>
-          <SignIn/>
+          <NewSignIn/>
           </div>} />
           <Route path = '/Profile' render={(props)=> <div>
             <Profile/>

@@ -10,6 +10,7 @@ const TeacherRegisterController = require("./controllers/TeacherRegisterControll
 const TeacherLoginController = require("./controllers/TeacherLoginController");
 const config = require("./config/db");
 
+
 // Connect to the Data-base
 mongoose.connect('mongodb://localhost/db');
 mongoose.Promise = global.Promise;
@@ -29,24 +30,25 @@ app
 app
    .route("/api/account/AdminSigIn", )
    .post(AdminLoginController.handleSignInAttempt);
-  
-app 
+
+app
   .route("/api/GetAllInstitution", )
   .get(AdminLoginController.getAllAccounts);
 
-app 
+app
   .route("/api/specificInstitutionapi/:AdminId")
   .get(AdminLoginController.GetSpecificUser);
 
-app 
+app
   .route("/api/DeleteInstitution/:AdminId", )
   .delete(AdminLoginController.deleteOnly);
 
-app 
+app
   .route("/api/UpdateSpecificUser/:AdminId")
   .put(AdminLoginController.Update);
 
 /****************************************Student**************************************************/
+
 
 app
    .route("/api/account/StudentRegistration", )
@@ -55,20 +57,20 @@ app
 app
    .route("/api/account/StudentSigIn", )
    .post(StudentLoginController.handleSignInAttempt);
-  
-app 
+
+app
   .route("/api/GetAllStudent", )
   .get(StudentLoginController.getAllAccounts);
 
-app 
+app
   .route("/api/specificStudent/:StudentId")
   .get(StudentLoginController.GetSpecificUser);
 
-app 
+app
   .route("/api/DeleteStudent/:StudentId", )
   .delete(StudentLoginController.deleteOnly);
 
-app 
+app
   .route("/api/UpdateSpecificStudent/:StudentId")
   .put(StudentLoginController.Update);
 
@@ -80,20 +82,20 @@ app
 app
    .route("/api/account/TeacherSigIn", )
    .post(TeacherLoginController.handleSignInAttempt);
-  
-app 
+
+app
   .route("/api/GetAllTeacher", )
   .get(TeacherLoginController.getAllAccounts);
 
-app 
+app
   .route("/api/specificTeacher/:TeacherId")
   .get(TeacherLoginController.GetSpecificUser);
 
-app 
+app
   .route("/api/DeleteTeacher/:TeacherId", )
   .delete(TeacherLoginController.deleteOnly);
 
-app 
+app
   .route("/api/UpdateSpecificTeacher/:TeacherId")
   .put(TeacherLoginController.Update);
 

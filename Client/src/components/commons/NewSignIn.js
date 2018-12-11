@@ -17,6 +17,7 @@ import Paper from '@material-ui/core/Paper';
 import {withRouter} from 'react-router';
 import axios from 'axios';
 import RenderPropsMenu from './menurole';
+import ButtonAppBar from './Navbar';
 
 
 const styles = theme => ({
@@ -63,50 +64,21 @@ const styles = theme => ({
 
 
 
-class Register extends React.Component {
+class NewSignIn extends React.Component {
     constructor(props) {
         super(props);
         this.state =  {
-            Institutionname: '',
-            country: '',
-            city: '',
             AdminName: '',
             Adminpassword: '',
             Adminemail: ''
         }
-        this.handleInstitutionname = this.handleInstitutionname.bind(this);
-		this.handlecountry = this.handlecountry.bind(this);
-		this.handlecity = this.handlecity.bind(this);
-		this.handleAdminName = this.handleAdminName.bind(this);
+        this.handleAdminName = this.handleAdminName.bind(this);
 		this.handleAdminemail = this.handleAdminemail.bind(this);
         this.handleAdminpassword = this.handleAdminpassword.bind(this);
-        this.handleRegister = this.handleRegister.bind(this);
-        // this.formPreventDefault = this.formPreventDefault.bind(this);
+        this.handleSignIn = this.handleSignIn.bind(this);
+
 
     }
-
-    // formPreventDefault(e) {
-    //     alert("hello i call");
-    //     e.preventDefault();
-    // }
-
-    handleInstitutionname = () => {
-		this.setState({
-			Institutionname: document.getElementById('Institutionname').value,
-	  });
-	}
-
-	handlecountry = () => {
-		this.setState({
-			country: document.getElementById('country').value,
-	  });
-	}
-
-	handlecity (){
-		this.setState({
-			city:document.getElementById('city').value,
-	  });
-	}
 
 	handleAdminpassword () {
 		this.setState({
@@ -126,18 +98,15 @@ class Register extends React.Component {
 	  });
     }
 
-    handleRegister(event) {
-        this.state = { Institutionname: '', country: '', city: '', AdminName: '',Adminpassword: '',
+    handleSignIn(event) {
+        this.state = { AdminName: '',Adminpassword: '',
             Adminemail: ''
         }
         event.preventDefault();
         console.log("m here");
-        console.log(this.refs.Institutionname);
-        axios.post("http://localhost:3001/api/account/InstitutionRegistration",
+        console.log(this.refs.AdminName);
+        axios.post("http://localhost:3001/api/account/AdminSigIn",
             this.setState({
-                Institutionname:this.handleInstitutionname,
-                country:this.handlecountry(),
-                city:this.handlecity(),
                 AdminName:this.handleAdminName(),
                 Adminpassword:this.handleAdminpassword(),
                 Adminemail:this.handleAdminemail()
@@ -146,44 +115,41 @@ class Register extends React.Component {
                 console.log(res);
                 console.log(res.data);
             })
-            console.log("hello now m here");
+
     }
 
     render() {
         const { classes } = this.props;
         const  {
-			Institutionname,
-			country,
-			city,
 			AdminName,
 			Adminpassword,
 			Adminemail,
 			} = this.state;
         return(
             <div>
+                <ButtonAppBar/>
 				<CssBaseline />
                 <main className={classes.layout}>
                 <Paper className={classes.paper}>
                 <Typography component="h1" variant="h5">
-                Institution Registration Form
+                Admin SignIn
                 </Typography>
                 <form className={classes.form}>
                     <FormControl margin="normal" required fullWidth>
-                            <InputLabel htmlFor="password">Institutionname</InputLabel>
-                        <Input name="Institutionname" type="name" id="Institutionname" value = {this.Institutionname} onChange = {this.handleInstitutionname} autoComplete="name" />
-                    </FormControl>
-                    <FormControl margin="normal" required fullWidth>
-                        <InputLabel htmlFor="country">country</InputLabel>
-                        <Input id="country" type = "name" name="country" value = {this.country} onChange = {this.handlecountry} autoComplete="country" autoFocus />
-                    </FormControl>
-                    <FormControl margin="normal" required fullWidth>
-                        <InputLabel htmlFor="city">city</InputLabel>
-                        <Input id="city" type = "name" name="city" value = {this.city} onChange = {this.handlecity} autoComplete="classname" autoFocus />
+                        <InputLabel htmlFor="AdminName">AdminName</InputLabel>
+                        <Input id="AdminName" type = "name" name="AdmiNname" value = {this.AdminName} onChange = {this.handleAdminName} autoComplete="classname" autoFocus />
                     </FormControl>
 
                     <FormControl margin="normal" required fullWidth>
-                        <InputLabel htmlFor="AdminName">AdminName</InputLabel>
-                        <Input id="AdminName" type = "name" name="AdmiNname" value = {this.AdminName} onChange = {this.handleAdminName} autoComplete="classname" autoFocus />
+                        <InputLabel htmlFor="password">Adminemail</InputLabel>
+                        <Input
+                            name="Adminemail"
+                            type="email"
+                            id="Adminemail"
+                            value = {this.Adminemail}
+                            onChange = {this.handleAdminemail}
+                            autoComplete="Adminemail"
+                        />
                     </FormControl>
                     <FormControl margin="normal" required fullWidth>
                         <InputLabel htmlFor="password">Adminpassword</InputLabel>
@@ -196,17 +162,6 @@ class Register extends React.Component {
                             autoComplete="current-password"
                         />
                     </FormControl>
-                    <FormControl margin="normal" required fullWidth>
-                        <InputLabel htmlFor="password">Adminemail</InputLabel>
-                        <Input
-                            name="Adminemail"
-                            type="email"
-                            id="Adminemail"
-                            value = {this.Adminemail}
-                            onChange = {this.handleAdminemail}
-                            autoComplete="Adminemail"
-                        />
-                    </FormControl>
 
                     <FormControlLabel
                         control={<Checkbox value="remember" color="primary" />}
@@ -217,10 +172,10 @@ class Register extends React.Component {
                         fullWidth
                         variant="contained"
                         color="primary"
-                        onClick={this.handleRegister}
+                        onClick={this.handleSignIn}
                         className={classes.submit}
                     >
-                        Registration Form
+                        SignIn
                     </Button>
                 </form>
             </Paper>
@@ -235,4 +190,4 @@ class Register extends React.Component {
 //     };
 
 
-export default withRouter(withStyles(styles)(Register));
+export default withRouter(withStyles(styles)(NewSignIn));
