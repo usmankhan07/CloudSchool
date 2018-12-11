@@ -81,8 +81,14 @@ class Register extends React.Component {
 		this.handleAdminemail = this.handleAdminemail.bind(this);
         this.handleAdminpassword = this.handleAdminpassword.bind(this);
         this.handleRegister = this.handleRegister.bind(this);
+        // this.formPreventDefault = this.formPreventDefault.bind(this);
 
     }
+
+    // formPreventDefault(e) {
+    //     alert("hello i call");
+    //     e.preventDefault();
+    // }
 
     handleInstitutionname = (event) => {
 		this.setState({
@@ -124,6 +130,8 @@ class Register extends React.Component {
         this.state = { Institutionname: '', country: '', city: '', AdminName: '',Adminpassword: '',
             Adminemail: ''
         }
+        event.preventDefault();
+        console.log("m here");
         console.log(this.refs.Institutionname);
         axios.post("/api/account/InstitutionRegistration",
             this.setState({
@@ -207,7 +215,7 @@ class Register extends React.Component {
                         fullWidth
                         variant="contained"
                         color="primary"
-                        onClick={this.handleInstitutionRegistration}
+                        onClick={this.handleRegister}
                         className={classes.submit}
                     >
                         Registration Form
@@ -215,7 +223,7 @@ class Register extends React.Component {
                 </form>
             </Paper>
         </main>
-    </div>
+    </div>// /dwdn
         );
     }
 
