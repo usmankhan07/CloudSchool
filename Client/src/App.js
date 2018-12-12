@@ -15,7 +15,7 @@ import InstitutionsTable from './components/AdminDashboard/Institutions';
 // import CustomizedTable from "./components/AdminDashboard/Table.js";
 import StudentDashboard from './components/StudentDashboard/StudentDashboard';
 import TeacherDashboard from './components/Teacher/TeacherDashboard';
-import Register from './components/commons/NewRegistration';
+// import Register from './components/commons/NewRegistration';
 import NewSignIn from './components/commons/NewSignIn';
 
 class App extends Component {
@@ -45,7 +45,7 @@ Most of our business<br />are achieved through satisfied clients and our commitm
 
           <Route path = '/Registration' render={(props)=> <div>
             <ButtonAppBar/>
-            <Register/>
+            <Registration/>
             </div>}/>
 
             <Route path = '/Button' render={(props)=> <div>

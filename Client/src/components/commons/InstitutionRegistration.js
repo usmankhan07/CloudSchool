@@ -18,7 +18,7 @@ import {withRouter} from 'react-router';
 import axios from 'axios';
 import RenderPropsMenu from './menurole';
 
-
+// JSS
 const styles = theme => ({
 	layout: {
 		width: 'auto',
@@ -56,14 +56,8 @@ const styles = theme => ({
 });
 
 
-
-
-
-
-
-
-
-class Register extends React.Component {
+// Component
+class InstitutionRegister extends React.Component {
     constructor(props) {
         super(props);
         this.state =  {
@@ -81,15 +75,11 @@ class Register extends React.Component {
 		this.handleAdminemail = this.handleAdminemail.bind(this);
         this.handleAdminpassword = this.handleAdminpassword.bind(this);
         this.handleRegister = this.handleRegister.bind(this);
-        // this.formPreventDefault = this.formPreventDefault.bind(this);
+
 
     }
 
-    // formPreventDefault(e) {
-    //     alert("hello i call");
-    //     e.preventDefault();
-    // }
-
+    // Events Handling Functions
     handleInstitutionname = () => {
 		this.setState({
 			Institutionname: document.getElementById('Institutionname').value,
@@ -135,7 +125,7 @@ class Register extends React.Component {
         console.log(this.refs.Institutionname);
         axios.post("http://localhost:3001/api/account/InstitutionRegistration",
             this.setState({
-                Institutionname:this.handleInstitutionname,
+                Institutionname:this.handleInstitutionname(),
                 country:this.handlecountry(),
                 city:this.handlecity(),
                 AdminName:this.handleAdminName(),
@@ -145,7 +135,7 @@ class Register extends React.Component {
             }) ).then(res => {
                 console.log(res);
                 console.log(res.data);
-            })
+            }).then(data => data)
             console.log("hello now m here");
     }
 
@@ -208,10 +198,6 @@ class Register extends React.Component {
                         />
                     </FormControl>
 
-                    <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
-                        label="Remember me"
-                    />
                     <Button
                         type="submit"
                         fullWidth
@@ -235,4 +221,4 @@ class Register extends React.Component {
 //     };
 
 
-export default withRouter(withStyles(styles)(Register));
+export default withRouter(withStyles(styles)(InstitutionRegister));

@@ -10,13 +10,14 @@ const studentSchema = new Schema({
 		type: String,
 		required: true,
     },
-    password:{
-        type:String,
-        required:true
-    },
+
     email:{
         type:String,
         required:true,
+    },
+    password:{
+        type:String,
+        required:true
     },
     InstitutionName:{
         type:String,
@@ -32,7 +33,7 @@ const studentSchema = new Schema({
     },
     StudentId:{
         type:Schema.Types.ObjectId
-        
+
     }
 });
 

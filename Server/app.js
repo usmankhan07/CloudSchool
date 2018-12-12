@@ -75,6 +75,7 @@ app
   .put(StudentLoginController.Update);
 
 /****************************************Teacher**************************************************/
+
 app
    .route("/api/account/TacherRegistration", )
    .post(TeacherRegisterController.handleRegister);
@@ -100,8 +101,8 @@ app
   .put(TeacherLoginController.Update);
 
 
-
   // Listening to the port
 app.listen(process.env.port || 3001, function() {
   console.log("now listening request");
 });
+

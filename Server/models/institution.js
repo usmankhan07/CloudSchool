@@ -4,30 +4,24 @@ const Schema = mongoose.Schema;
 const institutionSchema = new Schema({
     Institutionname: {
         type: String,
-        
+
     },
     country: {
         type: String,
-        
+
     },
     city: {
         type: String,
-        
-    },
-    ownership: {
-        type: String,
+
     },
     AdminName: {
-            type:String,
-            required: true
+            type:String
     },
     Adminpassword:{
-            type:String,
-            required: true
+            type:String
     },
     Adminemail:{
-            type:String,
-            required:true
+            type:String
     },
     AdminId: {
         type:Schema.Types.ObjectId
